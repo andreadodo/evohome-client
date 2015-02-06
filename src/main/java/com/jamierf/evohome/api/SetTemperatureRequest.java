@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Optional;
+import com.jamierf.evohome.model.Temperature;
 import com.jamierf.evohome.model.TemperatureStatus;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
 public class SetTemperatureRequest {
 
     @JsonProperty("Value")
-    private final float temperature;
+    private final double temperature;
 
     @JsonProperty("NextTime")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -20,14 +21,14 @@ public class SetTemperatureRequest {
     @JsonProperty("Status")
     private final TemperatureStatus status;
 
-    public SetTemperatureRequest(final float temperature, final Optional<Date> until) {
-        this.temperature = temperature;
+    public SetTemperatureRequest(final Temperature temperature, final Optional<Date> until) {
+        this.temperature = temperature.toFahrenheit();
         this.until = until;
 
         status = until.isPresent() ? TemperatureStatus.Temporary : TemperatureStatus.Hold;
     }
 
-    public float getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 

@@ -12,7 +12,7 @@ public class Device {
     private final String name;
     private final boolean alive;
     private final String version;
-    private final Thermostat thermostat;
+    private final Temperature temperature;
 
     @JsonCreator
     public Device(
@@ -20,12 +20,12 @@ public class Device {
             @JsonProperty("name") final String name,
             @JsonProperty("isAlive") final boolean alive,
             @JsonProperty("thermostatVersion") final String version,
-            @JsonProperty("thermostat") final Thermostat thermostat) {
+            @JsonProperty("thermostat") final Temperature temperature) {
         this.id = id;
         this.name = name;
         this.alive = alive;
         this.version = version;
-        this.thermostat = thermostat;
+        this.temperature = temperature;
     }
 
     public long getId() {
@@ -44,8 +44,8 @@ public class Device {
         return version;
     }
 
-    public Thermostat getThermostat() {
-        return thermostat;
+    public Temperature getTemperature() {
+        return temperature;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Device {
                 .add("name", name)
                 .add("alive", alive)
                 .add("version", version)
-                .add("thermostat", thermostat)
+                .add("temperature", temperature)
                 .toString();
     }
 }
