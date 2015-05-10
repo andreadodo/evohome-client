@@ -10,7 +10,7 @@
 
     <groupId>com.jamierf</groupId>
     <artifactId>evohome-client</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
 
     <properties>
         <jdk.version>1.8</jdk.version>
